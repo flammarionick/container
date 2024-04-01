@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #87ceeb; /* Sky Blue */
+            background-color: #f6f8fc;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,38 +17,47 @@
             margin: 0;
         }
         .container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 300px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 400px;
             text-align: center;
         }
         h1 {
-            color: #8b0000; /* Bright Red */
+            color: #333333;
             margin-bottom: 20px;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         input[type="text"] {
-            width: calc(100% - 80px);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 2px solid #8b0000; /* Bright Red */
-            border-radius: 4px;
+            width: calc(100% - 40px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-bottom: 2px solid #4caf50;
+            background-color: transparent;
             font-size: 16px;
+            outline: none;
+            transition: border-bottom-color 0.3s ease;
+        }
+        input[type="text"]:focus {
+            border-bottom-color: #388e3c;
         }
         button {
             font-family: 'Poppins', sans-serif;
-            background-color: #1e90ff; /* Blue */
-            color: #fff;
+            background-color: #4caf50;
+            color: #ffffff;
             border: none;
-            border-radius: 4px;
-            padding: 10px 20px;
+            border-radius: 8px;
+            padding: 12px 20px;
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
         button:hover {
-            background-color: #4169e1; /* Darker Blue */
+            background-color: #388e3c;
         }
         ul {
             list-style-type: none;
@@ -56,37 +65,39 @@
             text-align: left;
         }
         .task-item {
+            background-color: #f3f3f3;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            padding: 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 10px;
-            padding: 10px;
-            background-color: #f0f0f0;
-            border-radius: 4px;
             transition: background-color 0.3s ease;
         }
         .task-item.completed .task-text {
             text-decoration: line-through;
         }
         .task-item input[type="checkbox"] {
-            margin-right: 10px;
+            margin-right: 12px;
+            cursor: pointer;
         }
         .delete-button {
-            background-color: transparent;
+            background-color: #ff5722;
             border: none;
-            color: #87050b; /* Bright Red */
+            color: #ffffff;
             cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
         }
         .delete-button:hover {
-            color: #8b0000; /* Darker Red */
+            background-color: #f4511e;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Just Do It</h1>
-        <input type="text" id="taskInput" placeholder="Add new task">
+        <input type="text" id="taskInput" placeholder="Enter your task">
         <button onclick="addTask()">Add Task</button>
 
         <ul id="taskList">
@@ -119,7 +130,7 @@
 
             var deleteButton = document.createElement('button');
             deleteButton.className = 'delete-button';
-            deleteButton.innerText = 'x';
+            deleteButton.innerText = 'Delete';
             deleteButton.onclick = function(e) {
                 e.stopPropagation();
                 taskList.removeChild(taskItem);
